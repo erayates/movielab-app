@@ -1,0 +1,9 @@
+.header{
+    background-color: transparent;
+    transform: translateY(0);
+    position: fixed;
+
+    
+    z-index: 2;
+
+}

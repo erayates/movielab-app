@@ -30,7 +30,7 @@ function HeroBanner() {
   }
 
   return (
-    <div className='hero_banner w-full h-[450px] flex items-center relative bg-black'>
+    <div className='hero_banner w-full h-[450px] flex items-center relative bg-black top-[-70px]'>
   
         <div className='backdrop_img w-full h-full absolute top-0 left-0 opacity-50 overflow-hidden'>
           
