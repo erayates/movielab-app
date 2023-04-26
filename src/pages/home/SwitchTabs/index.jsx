@@ -1,37 +1,17 @@
 import {useState} from 'react'
 import './style.css'
 
-function SwitchTabs({ data, onTabChange }) {
-    const [selectedTab, setSelectedTab] = useState(0);
-    const [left, setLeft] = useState(0);
+function SwitchTabs({ setDateRange, dateRange }) {
+ 
 
-    const activeTab = (tab, index) => {
-        setLeft(index * 100);
-        setTimeout(() => {
-            setSelectedTab(index);
-        }, 300);
-        onTabChange(tab, index);
-    };
   return (
-  
+    <label className="toggle">
+        <input type="checkbox"/>
+        <span className="slider"></span>
+        <span className="labels" data-on="DAILY" data-off="WEEKLY" onClick={() => setDateRange(dateRange !== 'day' ? 'day' : 'week')}></span>
+    </label>
 
-    <div className="switchingTabs">
-    {/* <div className="tabItems">
-        {data.map((tab, index) => (
-            <span
-                key={index}
-                className={`tabItem ${
-                    selectedTab === index ? "active" : ""
-                }`}
-                onClick={() => activeTab(tab, index)}
-            >
-                {tab}
-            </span>
-        ))}
-        <span className="movingBg" style={{ left }} />
-    </div> */}
-</div>
-  
+
   )
 }
 

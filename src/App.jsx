@@ -3,7 +3,7 @@ import { useState,useEffect } from 'react'
 import './App.css'
 import { fetchData } from './utils/api'
 import { useDispatch,useSelector } from 'react-redux';
-import { getApiConfiguration } from './store/homeSlicer';
+import { getApiConfiguration,getMovieGenres } from './store/homeSlicer';
 
 import { BrowserRouter,Routes,Route } from 'react-router-dom';
 
@@ -20,9 +20,12 @@ import Page404 from './pages/404/404';
 function App() {
   const dispatch = useDispatch();
   const {url} = useSelector((state) => state.home)
+  const {movieGenres} = useSelector((state) => state.home)
+  console.log(movieGenres)
 
   useEffect(() => {
     fetchApiConfig();
+    dispatch(getMovieGenres());
   },[])
 
   const fetchApiConfig = () => {
@@ -44,9 +47,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" exact element={<Home />} />
-        <Route path="/details/:id" element={<Details />} />
+        <Route path="/:mediaType/:id" element={<Details />} />
         <Route path="/search/:query" element={<SearchResult />} />
         <Route path="/explore/:type" element={<Explore />} />
+    
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer/>

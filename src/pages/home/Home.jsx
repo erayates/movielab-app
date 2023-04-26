@@ -8,8 +8,11 @@ import { getTrending } from '../../store/homeSlicer'
 
 
 function Home() {
+
+  
   return (
     <>  
+   
         <HeroBanner/>
         <Trending/>
     </>

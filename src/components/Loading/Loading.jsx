@@ -7,7 +7,7 @@ function Loading() {
     useEffect(() => {
         setTimeout(() => {
             setLoading(false)
-        },3000)
+        },1500)
     },[])
 
   return (

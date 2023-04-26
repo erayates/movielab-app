@@ -11,11 +11,18 @@ export const getTrending =  createAsyncThunk('home/getTrending', (dateRange) => 
     return data;
 })
 
+export const getMovieGenres = createAsyncThunk('home/getMovieGenres', () => {
+    const data = fetchData('/genre/movie/list');
+    return data;
+})
+
+
 const homeSlice = createSlice({
     name: 'home',
     initialState: {
         url: {},
-        genres: {},
+        movieGenres: {},
+        tvGenres: {},
         trending:[],
 
     },
@@ -42,7 +49,20 @@ const homeSlice = createSlice({
         },
         [getTrending.pending]: (state,action) => {
             console.log('pending');
+        },
+
+        [getMovieGenres.fulfilled]: (state,action) => {
+            state.movieGenres = action.payload;    
+        },
+        [getMovieGenres.rejected]: (state,action) => {
+            console.log(action.error.message);
+     
+        },
+        [getMovieGenres.pending]: (state,action) => {
+            console.log('pending');
         }
+
+
 
         
     }
