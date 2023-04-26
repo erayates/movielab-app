@@ -1,9 +1,6 @@
 import {createSlice,createAsyncThunk} from '@reduxjs/toolkit';
-import axios from 'axios';
-import { useFetch } from '../hooks/useFetch';
+
 import { fetchData } from '../utils/api';
-
-
 
 
 export const getTrending =  createAsyncThunk('home/getTrending', (dateRange) => {
@@ -11,34 +8,58 @@ export const getTrending =  createAsyncThunk('home/getTrending', (dateRange) => 
     return data;
 })
 
-export const getMovieGenres = createAsyncThunk('home/getMovieGenres', () => {
-    const data = fetchData('/genre/movie/list');
+export const getPopular = createAsyncThunk('home/getPopular', (mediaType) => {
+    const data = fetchData(`/${mediaType}/popular`);
     return data;
 })
+
+export const getGenres = createAsyncThunk('home/getGenres', () => {
+    var genreList = [];
+    const data = fetchData('/genre/movie/list');
+    const data2 = fetchData('/genre/tv/list');
+
+    return Promise.all([data,data2]).then((values) => {
+        var fetchedMovieGenres = values[0].genres;
+        var fetchedTvGenres = values[1].genres;
+        genreList = fetchedMovieGenres.filter((genre) => fetchedTvGenres.find((genre2) => genre2.id !== genre.id));
+        return genreList;
+
+    })
+        
+})
+
+
+export const getTopRated = createAsyncThunk('home/getTopRated', (mediaType) => {
+    const data = fetchData(`/${mediaType}/top_rated`);
+    return data;
+})
+
 
 
 const homeSlice = createSlice({
     name: 'home',
     initialState: {
         url: {},
-        movieGenres: {},
-        tvGenres: {},
+        genres:{},
         trending:[],
+        popular:[],
+        topRated: [],
+
 
     },
     reducers: {
         getApiConfiguration: (state,action) => {
             state.url = action.payload;
         },
-        getGenres: (state,action) => {
-            state.genres = action.payload;
-        },
+
     
     
     },
 
 
     extraReducers:{
+
+        // Trending Medias
         [getTrending.fulfilled]: (state,action) => {
             state.trending = action.payload;
             
@@ -51,14 +72,39 @@ const homeSlice = createSlice({
             console.log('pending');
         },
 
-        [getMovieGenres.fulfilled]: (state,action) => {
+        // Popular Medias
+        [getPopular.fulfilled]: (state,action) => {
+            state.popular = action.payload;
+        },
+        [getPopular.rejected]: (state,action) => {
+            console.log(action.error.message);
+        },
+        [getPopular.pending]: (state,action) => {
+            console.log("Pending popular medias.");
+        },
+        
+        // Top Rated
+        [getTopRated.fulfilled]: (state,action) => {
+            state.topRated = action.payload;
+        },
+        [getTopRated.rejected]: (state,action) => {
+            console.log(action.error.message);
+        },
+        [getTopRated.pending]: (state,action) => {
+            console.log("Pending top rated medias.");
+        },
+
+
+
+        // Movie Genres 
+        [getGenres.fulfilled]: (state,action) => {
             state.movieGenres = action.payload;    
         },
-        [getMovieGenres.rejected]: (state,action) => {
+        [getGenres.rejected]: (state,action) => {
             console.log(action.error.message);
      
         },
-        [getMovieGenres.pending]: (state,action) => {
+        [getGenres.pending]: (state,action) => {
             console.log('pending');
         }
 
@@ -68,5 +114,5 @@ const homeSlice = createSlice({
     }
 })
 
-export const {getApiConfiguration,getGenres} = homeSlice.actions;
+export const {getApiConfiguration} = homeSlice.actions;
 export default homeSlice.reducer;

@@ -1,6 +1,7 @@
 import React, { useEffect,useState} from 'react'
 import { useSelector } from 'react-redux'
 import { CircularProgressbar,buildStyles} from 'react-circular-progressbar'
+import 'react-circular-progressbar/dist/styles.css'
 import dayjs from 'dayjs'
 import {BsFillArrowLeftCircleFill,BsFillArrowRightCircleFill} from 'react-icons/bs'
 import { nanoid } from 'nanoid'
@@ -11,26 +12,25 @@ import { useNavigate } from 'react-router-dom'
 function Carousel({data}) {
     const navigate = useNavigate();
 
-    const carousel = document.querySelector('.carousel')
-
-    const scrollLeft = () => {
-        carousel.scrollLeft -= 200
+    const scrollLeft = (e) => {
+        e.target.parentNode.parentNode.children[2].scrollLeft -= 220
     }
-    const scrollRight = () => {
-        carousel.scrollLeft += 200
-    }
-    
+    const scrollRight = (e) => {
 
+        e.target.parentNode.parentNode.children[2].scrollLeft += 220
+       
+    }
 
     const {movieGenres} = useSelector((state) => state.home)
 
     const getMovieGenres = (genre_ids) => {
         const movieGenreList = []
        genre_ids.map((id) => {
-        movieGenres.genres.map((genre) => {
+        movieGenres.map((genre) => {
             id === genre.id && movieGenreList.push(genre.name);
         })
        })
+      
        return movieGenreList;
     }
 
@@ -38,7 +38,7 @@ function Carousel({data}) {
   return (
     <>
    
-<BsFillArrowLeftCircleFill className='text-white text-opacity-50 text-[30px] hidden md:block cursor-pointer z-30 absolute left-[-20px] top-[calc(50%-25px)]' onClick={scrollLeft}/>
+<BsFillArrowLeftCircleFill className='text-white text-opacity-50 text-[30px] hidden md:block cursor-pointer z-30 absolute left-[-20px] top-[calc(50%-25px)]' onClick={(e) => scrollLeft(e)}/>
 <div className='carousel flex overflow-x-auto overflow-y-hidden scroll-smooth '>
  
     {data?.map((item) => {
@@ -80,7 +80,7 @@ function Carousel({data}) {
 
 
 </div>
-<BsFillArrowRightCircleFill className='text-white text-opacity-50 text-[30px] hidden md:block cursor-pointer absolute right-[-20px] top-[calc(50%-30px)]' onClick={scrollRight} background={true}/>
+<BsFillArrowRightCircleFill className='text-white text-opacity-50 text-[30px] hidden md:block cursor-pointer absolute right-[-20px] top-[calc(50%-30px)]' onClick={(e) => scrollRight(e)} background={true}/>
 </>
   )
 }
