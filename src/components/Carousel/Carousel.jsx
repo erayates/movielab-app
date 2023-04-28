@@ -21,12 +21,12 @@ function Carousel({data}) {
        
     }
 
-    const {movieGenres} = useSelector((state) => state.home)
+    const {genres} = useSelector((state) => state.home)
 
     const getMovieGenres = (genre_ids) => {
         const movieGenreList = []
        genre_ids.map((id) => {
-        movieGenres.map((genre) => {
+        genres.map((genre) => {
             id === genre.id && movieGenreList.push(genre.name);
         })
        })

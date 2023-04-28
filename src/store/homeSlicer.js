@@ -98,7 +98,7 @@ const homeSlice = createSlice({
 
         // Movie Genres 
         [getGenres.fulfilled]: (state,action) => {
-            state.movieGenres = action.payload;    
+            state.genres = action.payload;    
         },
         [getGenres.rejected]: (state,action) => {
             console.log(action.error.message);

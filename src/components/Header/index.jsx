@@ -26,7 +26,7 @@ function Header() {
       
       <nav className='md:container mx-auto flex justify-between items-center relative'>
         <div className='logo pb-3 mx-4'>
-          <img src='./logo2.png' alt='logo' className='logo w-[150px] mx-auto block mt-5'/>
+          <img src='/logo2.png' alt='logo' className='logo w-[150px] mx-auto block mt-5'/>
         </div>
         <div className='menu'>
           <ul className='md:flex'>
