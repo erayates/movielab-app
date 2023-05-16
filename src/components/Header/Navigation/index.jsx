@@ -1,13 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux'
 
 import '../styles.css'
-import { getGenres } from '../../../store/homeSlicer'
+
 
 function Navigation() {
   const { genres } = useSelector((state) => state.home)
+  
+
 
 
   return (
@@ -50,7 +52,7 @@ function Navigation() {
           <li className="mb-4 w-72 p-2 pt-20 mx-5 rounded-xl ">
             <p>Categories</p>
             <div className='flex flex-wrap mt-5'>
-              {genres?.map((genre) => {
+              {genres.length > 0 && genres.map((genre) => {
                 return (
                   <Link to={`/genres/${genre.id}`} key={genre.id} className='hover:text-white text-[#6C6C6C] font-medium'>
                     <span className='text-[14px] mr-2'>#{genre.name}</span>

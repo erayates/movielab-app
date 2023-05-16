@@ -61,51 +61,26 @@ const homeSlice = createSlice({
             state.trending = action.payload;
             
         },
-        [getTrending.rejected]: (state,action) => {
-            console.log(action.error.message);
-     
-        },
-        [getTrending.pending]: (state,action) => {
-            console.log('pending');
-        },
+
 
         // Popular Medias
         [getPopular.fulfilled]: (state,action) => {
             state.popular = action.payload;
         },
-        [getPopular.rejected]: (state,action) => {
-            console.log(action.error.message);
-        },
-        [getPopular.pending]: (state,action) => {
-            console.log("Pending popular medias.");
-        },
+   
         
         // Top Rated
         [getTopRated.fulfilled]: (state,action) => {
             state.topRated = action.payload;
-        },
-        [getTopRated.rejected]: (state,action) => {
-            console.log(action.error.message);
-        },
-        [getTopRated.pending]: (state,action) => {
-            console.log("Pending top rated medias.");
         },
 
 
 
         // Movie Genres 
         [getGenres.fulfilled]: (state,action) => {
-            
             state.genres = action.payload;    
-          
         },
-        [getGenres.rejected]: (state,action) => {
-            console.log(action.error.message);
-     
-        },
-        [getGenres.pending]: (state,action) => {
-            console.log('pending');
-        }
+ 
 
 
 

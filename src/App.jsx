@@ -19,14 +19,10 @@ import Page404 from './pages/404/404';
 
 function App() {
   const dispatch = useDispatch();
-  const {url} = useSelector((state) => state.home)
-  const {genres} = useSelector((state) => state.home)
-
 
   useEffect(() => {
     fetchApiConfig();
     dispatch(getGenres());
-
   },[])
 
   const fetchApiConfig = () => {
@@ -39,9 +35,6 @@ function App() {
       dispatch(getApiConfiguration(url))
     })
   }
-
-
-
 
   return (
     <BrowserRouter>
