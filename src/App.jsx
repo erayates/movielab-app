@@ -45,15 +45,14 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Header />
-      <Routes>
-        <Route path="/" exact element={<Home />} />
-        <Route path="/:mediaType/:id" element={<Details />} />
-        <Route path="/search/:query" element={<SearchResult />} />
-        <Route path="/explore/:type" element={<Explore />} />
-    
-        <Route path="*" element={<Page404 />} />
-      </Routes>
+        <Header/>
+        <Routes >
+          <Route path="/" exact element={<Home />} />
+          <Route path="/:mediaType/:id" element={<Details />} />
+          <Route path="/search/:query" element={<SearchResult />} />
+          <Route path="/explore/:type" element={<Explore />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
       <Footer/>
     </BrowserRouter>
   )

@@ -26,7 +26,7 @@ function Carousel({data}) {
     const getMovieGenres = (genre_ids) => {
         const movieGenreList = []
        genre_ids.map((id) => {
-        genres.map((genre) => {
+        movieGenreList.map((genre) => {
             id === genre.id && movieGenreList.push(genre.name);
         })
        })
@@ -45,11 +45,11 @@ function Carousel({data}) {
         const movieGenreList = getMovieGenres(item.genre_ids)
    
         return (
-            <div className='flex-grow-0 flex-shrink-0 w-[150px] h-[250px]  md:w-[200px] md:h-[350px] bg-transparent rounded-lg my-2 mr-5 relative' key={item.id} onClick={() => navigate(`/${item.media_type}/${item.id}`)}>
-                <div className='w-full h-3/4 bg-black bg-opacity-50 rounded-lg'>
-                <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" className='w-full h-full object-cover rounded-lg'/>
+            <div className='flex-grow-0 flex-shrink-0 w-[150px] h-[250px]  md:w-[200px] md:h-[350px] bg-transparent rounded-2xl my-2 mr-5 relative' key={item.id} onClick={() => navigate(`/${item.media_type}/${item.id}`)}>
+                <div className='w-full h-3/4 bg-black bg-opacity-50 rounded-2xl'>
+                <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" className='w-full h-full object-cover rounded-2xl'/>
                     <div className='genre-list flex flex-wrap flex-auto absolute top-[0] p-1 w-full'>
-                    {movieGenreList.map((genre) => <span key={nanoid()}className=' bg-[#f08080] m-1 py-1 px-2 text-white text-[12px] rounded-lg '>{genre}</span>)}
+                    {movieGenreList.map((genre) => <span key={nanoid()}className=' bg-[#f08080] m-1 py-1 px-2 text-white text-[12px] rounded-2xl '>{genre}</span>)}
                     </div>
                 </div>
                 <CircularProgressbar 
@@ -69,7 +69,6 @@ function Carousel({data}) {
                 <div className='w-full h-full flex flex-col pt-3'>
                     <h3 className='text-white text-[16px]'>{item.title}</h3>
                     <p className=' text-gray-500 text-[12px]'>{dayjs( item.release_date).format('MMM D, YYYY') }</p>
-                    
                 </div>
                
             </div>

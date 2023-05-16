@@ -51,9 +51,6 @@ const homeSlice = createSlice({
         getApiConfiguration: (state,action) => {
             state.url = action.payload;
         },
-
-    
-    
     },
 
 
@@ -98,7 +95,9 @@ const homeSlice = createSlice({
 
         // Movie Genres 
         [getGenres.fulfilled]: (state,action) => {
+            
             state.genres = action.payload;    
+          
         },
         [getGenres.rejected]: (state,action) => {
             console.log(action.error.message);

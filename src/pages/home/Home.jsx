@@ -10,16 +10,14 @@ import TopRated from './TopRated'
 
 
 function Home() {
-
   
-  return (
-    <>  
-   
-        <HeroBanner/>
-        <Trending/>
-        <Popular/>
-        <TopRated/>
-    </>
+return (
+    <section className='relative ml-96 p-16'>  
+      <HeroBanner/>
+      <Trending/>
+      <Popular/>
+      <TopRated/>
+    </section>
   )
 }
 
