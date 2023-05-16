@@ -25,15 +25,13 @@ function Details() {
       setMediaDetails(response)
     })
   },[mediaDetails])
-  // style={{
-  //   background: `linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url(https://image.tmdb.org/t/p/original${mediaDetails?.backdrop_path}) no-repeat  center center`,
-  //   backgroundSize: 'cover'
-  // }} 
+  
   return (
-    <div className='details-page relative flex flex-col'>
-    
+    <section className='details-page relative flex flex-col ml-96 p-16' style={{
+      background: `linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url(https://image.tmdb.org/t/p/original${mediaDetails?.backdrop_path}) no-repeat  center center`,
+      backgroundSize: 'cover'
+    }} >
         <div className='details-banner container mx-auto flex pt-10'>
-         
           <div className='details-header__poster w-full h-[350px] relative rounded-lg'>
             <img src={`https://image.tmdb.org/t/p/original${mediaDetails?.poster_path}`} alt="" className='w-full h-full object-cover object-center rounded-lg'/>
           </div>
@@ -88,7 +86,7 @@ function Details() {
         <Recommendations mediaType={mediaType} id={id}/>
         <SimilarMovies mediaType={mediaType} id={id} />
 
-    </div>
+    </section>
   
   )
 }

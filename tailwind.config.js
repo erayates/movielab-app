@@ -8,6 +8,7 @@ export default {
       'serif': ['Merriweather', 'serif'],
       'mono': ['JetBrains Mono', 'monospace'],
       'poppins': ['Poppins', 'sans-serif'],
+      'dancing-script': ['Dancing Script', 'cursive'],
 
     }
   },

@@ -29,7 +29,7 @@ function Popular() {
 
         <div className='container mx-auto popular relative mt-[50px]'>
             <div className='popular-header flex justify-between mr-5 mb-3'>
-                <h3 className='text-white text-[20px] inline-block'>Popular</h3>
+                <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Popular</h3>
                 <SwitchTabs setMediaType={setMediaType} mediaType={mediaType}/>
             </div>
                 <Carousel data = {popularMedia} />

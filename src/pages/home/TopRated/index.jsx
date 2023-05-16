@@ -30,7 +30,7 @@ function TopRated() {
 
         <div className='container mx-auto top-rated relative mt-[50px]'>
             <div className='top-rated-header flex justify-between mr-5 mb-3'>
-                <h3 className='text-white text-[20px] inline-block'>Top Rated</h3>
+                <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Top Rated</h3>
                 <SwitchTabs setMediaType={setMediaType} mediaType={mediaType} />
             </div>
             <Carousel data={topRatedMedias} />

@@ -2,8 +2,6 @@ import {useState} from 'react'
 import './style.css'
 
 function SwitchTabs({ setDateRange, dateRange, setMediaType, mediaType }) {
- 
-
   return (
     <label className="toggle">
         <input type="checkbox"/>
