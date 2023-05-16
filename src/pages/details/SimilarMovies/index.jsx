@@ -14,12 +14,11 @@ function SimilarMovies({mediaType,id}) {
     })
   }, [id])
 
-  
 
 
   return (
     <div className='details-recommendations container mx-auto relative'>
-        <h1 className='text-white text-[24px] mt-[50px]'>Similar Movies</h1>
+        <h2 class="text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500 mt-[50px]">Videos</h2>
       <Carousel data={similarMovies} />
     </div>
   )

@@ -1,4 +1,4 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,7 +16,7 @@ import SimilarMovies from './SimilarMovies';
 
 
 function Details() {
-  const {mediaType,id} = useParams();
+  const { mediaType, id } = useParams();
   const [mediaDetails, setMediaDetails] = useState(null);
 
 
@@ -24,70 +24,65 @@ function Details() {
     fetchData(`/${mediaType}/${id}`).then((response) => {
       setMediaDetails(response)
     })
-  },[mediaDetails])
-  
-  return (
-    <section className='details-page relative flex flex-col ml-96 p-16' style={{
-      background: `linear-gradient(90deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 100%), url(https://image.tmdb.org/t/p/original${mediaDetails?.backdrop_path}) no-repeat  center center`,
-      backgroundSize: 'cover'
-    }} >
-        <div className='details-banner container mx-auto flex pt-10'>
-          <div className='details-header__poster w-full h-[350px] relative rounded-lg'>
-            <img src={`https://image.tmdb.org/t/p/original${mediaDetails?.poster_path}`} alt="" className='w-full h-full object-cover object-center rounded-lg'/>
-          </div>
-          
-          <div className='details-header__overview px-8'>
-            <h1 className="text-white text-[36px] mb-5">{mediaDetails?.original_title}</h1>
-            <div className="">
-                <CircularProgressbar
-                  text={`${mediaDetails?.vote_average.toFixed(1)}`}
-                  value={mediaDetails?.vote_average * 10} 
-                  className='w-[50px] h-[50px] text-[#01b4e4] top-5 right-5'
-                  styles={buildStyles({
-                    textColor: "#fff",
-                    pathColor: "#39FF14",
-                    trailColor: "white",
-                    textSize: "32px"
-                  })}
-                  />
-    
-                  <PlayIcon/>
-                <span className="text-white ml-2">Watch The Trailer</span>
-            </div>
-              <div className="mt-5">
+  }, [])
 
-              <h1 className='text-white text-[24px]'>Overview</h1>
-          
-          
-              <p className='text-gray-500 text-[12px]'>{mediaDetails?.overview}</p>
-          
-              <div className='details-header__info mt-5'>
-                <span className='text-white text-[12px] mr-5'>Release Date: <span className="text-gray-500">{mediaDetails?.release_date}</span></span>
-                <span className='text-white text-[12px] mr-5'>Runtime: <span className="text-gray-500">{mediaDetails?.runtime} minutes</span></span>
+  console.log(mediaDetails)
+
+  return (
+    <section className='details-page relative flex flex-col ml-96 p-16' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mediaDetails?.backdrop_path})`, backgroundColor:'white', backgroundBlendMode: 'luminosity', }}>
+        <div className='details-banner container mx-auto flex pt-10 '>
+          <div className='details-header__poster w-full h-[350px] relative rounded-lg'>
+            <img src={`https://image.tmdb.org/t/p/original${mediaDetails?.poster_path}`} alt="" className='w-full h-full object-cover object-center rounded-lg' />
+          </div>
+          <div className='details-header__overview px-8'>
+            <h1 className="text-white text-[36px] mb-5 font-semibold">{mediaDetails?.original_title}</h1>
+            <div className="flex items-center">
+              <CircularProgressbar
+                value={mediaDetails?.vote_average * 10}
+                text={`${mediaDetails?.vote_average.toFixed(1)}`}
+                className='w-[60px] h-[60px] z-30 mr-5'
+                background
+                backgroundPadding={12}
+                styles={buildStyles({
+                  backgroundColor: "#151515",
+                  textColor: "white",
+                  pathColor: "",
+                  trailColor: "transparent",
+                  textSize: '24px',
+                })}
+              />
+              <button className='bg-red-600 text-white py-2 px-6  rounded-lg shadow-lg shadow-red-600 block text-[16px] animate-pulse'>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.91 11.672a.375.375 0 010 .656l-5.603 3.113a.375.375 0 01-.557-.328V8.887c0-.286.307-.466.557-.327l5.603 3.112z" />
+                </svg>
+
+                Watch The Trailer
+              </button>
+            </div>
+            <div className="mt-5">
+              <h1 className='text-white text-[20px] font-semibold'>Overview</h1>
+              <p className='text-[#888888] text-[12px]'>{mediaDetails?.overview}</p>
+              <div className='details-header__info mt-5 font-semibold'>
+                <span className='text-white text-[12px] mr-5 '>Release Date: <span className="text-gray-500">{mediaDetails?.release_date}</span></span>
+                <span className='text-white text-[12px] mr-5 '>Runtime: <span className="text-gray-500">{mediaDetails?.runtime} minutes</span></span>
                 <span className='text-white text-[12px]'>Status: <span className="text-gray-500">{mediaDetails?.status}</span></span>
                 <hr className='opacity-25 mt-2'></hr>
                 <p className='text-white text-[12px] my-2'>Director: {mediaDetails?.director}</p>
                 <hr className='opacity-25'></hr>
                 <p className='text-white text-[12px] my-2'>Writer: {mediaDetails?.writer}</p>
               </div>
-               
-            
             </div>
-        
           </div>
-
-        
-            
-
         </div>
-        
-        <Cast mediaType={mediaType} id={id} />
-        <Videos mediaType={mediaType} id={id} />
-        <Recommendations mediaType={mediaType} id={id}/>
-        <SimilarMovies mediaType={mediaType} id={id} />
-
+      
+      <Cast mediaType={mediaType} id={id} />
+      <Videos mediaType={mediaType} id={id} />
+      <Recommendations mediaType={mediaType} id={id} />
+      <SimilarMovies mediaType={mediaType} id={id} />
+   
     </section>
-  
+
   )
 }
 

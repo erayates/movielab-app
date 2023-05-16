@@ -66,7 +66,7 @@ function Carousel({ data }) {
                                 })}
                             />
                             <div className='w-full h-1/4 flex flex-col pt-3 bg-[#151515] p-4 rounded-b-2xl'>
-                                <h3 className='text-white text-[14px]'>{item.title}</h3>
+                                <h3 className='text-white text-[14px] font-semibold'>{item.title}</h3>
                                 <p className=' text-gray-500 text-[12px]'>{dayjs(item.release_date).format('MMM D, YYYY')}</p>
                             </div>
 

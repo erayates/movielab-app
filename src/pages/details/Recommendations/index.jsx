@@ -1,25 +1,23 @@
-import { useEffect,useState } from 'react'
+import { useEffect, useState } from 'react'
 import Carousel from '../../../components/Carousel/Carousel'
 import { fetchData } from '../../../utils/api'
 
 
 
-function Recommendations({mediaType,id}) {
+function Recommendations({ mediaType, id }) {
   const [recommendations, setRecommendations] = useState(null);
 
   useEffect(() => {
     fetchData(`/${mediaType}/${id}/recommendations`).then((response) => {
       setRecommendations(response.results)
-      
+
     })
   }, [id])
-
-  
 
 
   return (
     <div className='details-recommendations container mx-auto relative'>
-        <h1 className='text-white text-[24px] mt-[50px]'>Recommendations</h1>
+      <h2 class="text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500 mt-[50px]">Recommendations</h2>
       <Carousel data={recommendations} />
     </div>
   )
