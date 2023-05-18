@@ -16,6 +16,8 @@ import SearchResult from './pages/searchResult/SearchResult';
 import Page404 from './pages/404/404';
 import Discover from './pages/discover/Discover';
 import SearchBar from './components/SearchBar';
+import Movies from './pages/movies/Movies';
+import TVSeries from './pages/tv/TVSeries';
 
 
 function App() {
@@ -46,6 +48,8 @@ function App() {
           <Route path="/:mediaType/:id" element={<Details />} />
           <Route path="/search/:query" element={<SearchResult />} />
           <Route path="/discover" element={<Discover />} />
+          <Route path='/movies' element={<Movies/>}/>
+          <Route path='/tv-series' element={<TVSeries/>} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       <Footer/>
