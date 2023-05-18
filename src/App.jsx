@@ -15,6 +15,7 @@ import Details from './pages/details/Details';
 import SearchResult from './pages/searchResult/SearchResult';
 import Page404 from './pages/404/404';
 import Discover from './pages/discover/Discover';
+import SearchBar from './components/SearchBar';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
   return (
     <BrowserRouter>
         <Header/>
+        <SearchBar/>
         <Routes >
           <Route path="/" exact element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />

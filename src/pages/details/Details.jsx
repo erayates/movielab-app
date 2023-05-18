@@ -25,8 +25,11 @@ function Details() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    window.scrollTo({
+      top:'0',
+      behavior: 'smooth'
+    })
     fetchData(`/${mediaType}/${id}`).then((response) => {
-      console.log(response)
       setMediaDetails(response)
     })
   }, [id])
