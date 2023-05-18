@@ -6,16 +6,27 @@ import { fetchData } from '../utils/api';
 
 export const getDetails = createAsyncThunk('details/getDetails', (mediaType,id) => {
     const data = fetchData(`/${mediaType}/${id}`);
-
     return data;
 })
 
 const detailsSlice = createSlice({
     name: 'home',
     initialState: {
-        details:[]
+        details:[],
+        videoPopupOpen: false,
+        videoId: ''
     },
-    reducers: {},
+
+
+    reducers: {
+        handleVideoPopupToggle: (state,action) => {
+            state.videoPopupOpen = !state.videoPopupOpen
+        },
+        setVideoId:(state,action) => {
+            state.videoId = action.payload
+        }
+
+    },
     extraReducers:{
         [getDetails.fulfilled]: (state,action) => {
             state.details = action.payload;
@@ -31,5 +42,5 @@ const detailsSlice = createSlice({
 
 })
 
-
+export const {handleVideoPopupToggle, setVideoId} = detailsSlice.actions
 export default detailsSlice.reducer;

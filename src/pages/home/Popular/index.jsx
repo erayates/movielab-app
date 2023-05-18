@@ -15,8 +15,6 @@ function Popular() {
     const {popular} = useSelector((state) => state.home)
 
 
-
-
     useEffect(() => {
         setPopularMedia(popular.results)
     },[popular])
@@ -32,7 +30,7 @@ function Popular() {
                 <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Popular</h3>
                 <SwitchTabs setMediaType={setMediaType} mediaType={mediaType}/>
             </div>
-                <Carousel data = {popularMedia} />
+                <Carousel data = {popularMedia} mediaType = {mediaType} />
         </div>
       
     

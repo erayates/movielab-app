@@ -31,7 +31,7 @@ function Trending() {
             <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Trending Movies</h3>
             <SwitchTabs setDateRange={setDateRange} dateRange={dateRange}/>
         </div>
-            <Carousel data = {trendingMovies} />
+            <Carousel data = {trendingMovies} mediaType='movie' />
     </div>
   )
 }

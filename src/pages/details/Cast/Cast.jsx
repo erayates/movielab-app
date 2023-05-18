@@ -19,7 +19,7 @@ function Cast({mediaType,id}) {
         <div className='cast-list flex  mt-5 overflow-x-hidden'>
             {cast?.cast.map((item) => (
                 <div className='cast-item flex flex-col mr-8' key={item.id}>
-                    <div className='w-[150px] h-[150px]'>
+                    <div className='w-[150px] h-[200px]'>
                         <img src={`https://image.tmdb.org/t/p/original${item.profile_path}`} alt="No Image Founded!" className='w-full h-full rounded-2xl object-cover '/>
                     </div>
                     <div className='mt-2'>

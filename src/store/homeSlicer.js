@@ -35,7 +35,6 @@ export const getTopRated = createAsyncThunk('home/getTopRated', (mediaType) => {
 })
 
 
-
 const homeSlice = createSlice({
     name: 'home',
     initialState: {
@@ -55,25 +54,21 @@ const homeSlice = createSlice({
 
 
     extraReducers:{
-
         // Trending Medias
         [getTrending.fulfilled]: (state,action) => {
             state.trending = action.payload;
             
         },
 
-
         // Popular Medias
         [getPopular.fulfilled]: (state,action) => {
             state.popular = action.payload;
         },
    
-        
         // Top Rated
         [getTopRated.fulfilled]: (state,action) => {
             state.topRated = action.payload;
         },
-
 
 
         // Movie Genres 

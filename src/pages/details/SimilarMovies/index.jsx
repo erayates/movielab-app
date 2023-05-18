@@ -10,7 +10,6 @@ function SimilarMovies({mediaType,id}) {
   useEffect(() => {
     fetchData(`/${mediaType}/${id}/similar`).then((response) => {
       setSimilarMovies(response.results)
-      
     })
   }, [id])
 
@@ -18,8 +17,8 @@ function SimilarMovies({mediaType,id}) {
 
   return (
     <div className='details-recommendations container mx-auto relative'>
-        <h2 class="text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500 mt-[50px]">Videos</h2>
-      <Carousel data={similarMovies} />
+      <h2 class="text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500 mt-[50px]">Similar Movies</h2>
+      <Carousel data={similarMovies} mediaType={mediaType} />
     </div>
   )
 }
