@@ -13,8 +13,8 @@ import Footer from './components/Footer';
 import Home from './pages/home/Home';
 import Details from './pages/details/Details';
 import SearchResult from './pages/searchResult/SearchResult';
-import Explore from './pages/explore/Explore';
 import Page404 from './pages/404/404';
+import Discover from './pages/discover/Discover';
 
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
           <Route path="/" exact element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />
           <Route path="/search/:query" element={<SearchResult />} />
-          <Route path="/explore/:type" element={<Explore />} />
+          <Route path="/discover" element={<Discover />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
       <Footer/>
