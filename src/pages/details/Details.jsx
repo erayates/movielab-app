@@ -14,7 +14,8 @@ import Videos from './Videos';
 import Recommendations from './Recommendations';
 import SimilarMovies from './SimilarMovies';
 
-import VideoPopup from './VideoPopup';
+import Img from '../../components/LazyLoadImage/img';
+import VideoPopup from '../../components/VideoPopup';
 
 
 function Details() {
@@ -48,7 +49,7 @@ function Details() {
     <section className='details-page relative flex flex-col ml-96 p-16 bg-no-repeat bg-cover'  style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${mediaDetails?.backdrop_path})`, backgroundColor: 'rgba(0,0,0,0.8)', backgroundBlendMode: 'darken', }}>
       <div className='details-banner container mx-auto flex pt-10 bg-[#151515] p-8 rounded-2xl'>
         <div className='details-header__poster w-full h-[350px] relative rounded-lg'>
-          <img src={`https://image.tmdb.org/t/p/original${mediaDetails?.poster_path}`} alt="" className='w-full h-full object-cover object-center rounded-lg' />
+          <Img src={`https://image.tmdb.org/t/p/original${mediaDetails?.poster_path}`} alt="" className='w-full h-full object-cover object-center rounded-lg' />
         </div>
         <div className='details-header__overview px-8'>
           <h1 className="text-white text-[36px] mb-5 font-semibold">{mediaType === 'movie' ? mediaDetails?.original_title : mediaDetails?.name}</h1>

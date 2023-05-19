@@ -18,6 +18,7 @@ import Discover from './pages/discover/Discover';
 import SearchBar from './components/SearchBar';
 import Movies from './pages/movies/Movies';
 import TVSeries from './pages/tv/TVSeries';
+import VideoPopup from './components/VideoPopup';
 
 
 function App() {
@@ -38,15 +39,15 @@ function App() {
       dispatch(getApiConfiguration(url))
     })
   }
-
   return (
     <BrowserRouter>
         <Header/>
-        <SearchBar/>
+        
+    
         <Routes >
           <Route path="/" exact element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />
-          <Route path="/search/:query" element={<SearchResult />} />
+          <Route path="/search/:mediaType/:query" element={<SearchResult />} />
           <Route path="/discover" element={<Discover />} />
           <Route path='/movies' element={<Movies/>}/>
           <Route path='/tv-series' element={<TVSeries/>} />

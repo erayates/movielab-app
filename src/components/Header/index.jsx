@@ -16,7 +16,7 @@ function Header() {
   return (
     <>
  
-      <header className='header fixed w-96 h-[100vh] bg-[#151515] '>
+      <header className='header fixed w-20 lg:w-96 h-full bg-[#151515] '>
         <Navigation/>
       </header>
 

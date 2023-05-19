@@ -21,7 +21,6 @@ function Videos({ mediaType, id }) {
 
     useEffect(() => {
         fetchData(`/${mediaType}/${id}/videos`).then((response) => {
-            console.log(response)
             setVideos(response)
         })
     }, [id])

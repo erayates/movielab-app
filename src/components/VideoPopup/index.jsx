@@ -4,7 +4,8 @@ import {AiOutlineClose} from 'react-icons/ai'
 import { useSelector, useDispatch } from 'react-redux'
 
 import './style.css'
-import { handleVideoPopupToggle } from '../../../store/detailsSlicer'
+
+import { handleVideoPopupToggle } from '../../store/detailsSlicer'
 
 function VideoPopup() {
     const [video, setVideo] = useState(null);
@@ -21,9 +22,9 @@ function VideoPopup() {
     }
 
   return (
-    <div className='video-popup flex justify-center items-center '>
-        <div className='video-content w-full h:full flex justify-center'>
-            <ReactPlayer url={video} controls={true} width='80%' height='100%'/>
+    <div className='video-popup flex w-full justify-center items-center z-40  '>
+        <div className='video-content flex w-3/4 justify-center'>
+            <ReactPlayer url={video} controls={true} width='100%' height='100%'/>
             <div className='close-btn relative top-[-30px]' onClick={handlePopup}>
                 <AiOutlineClose className='text-white text-[30px] z-30 cursor-pointer'/>
             </div>
