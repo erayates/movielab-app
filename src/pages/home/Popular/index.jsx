@@ -5,6 +5,8 @@ import SwitchTabs from '../SwitchTabs'
 import { getPopular } from '../../../store/homeSlicer'
 
 import Carousel from '../../../components/Carousel/Carousel'
+import '../../../styles/globals.css'
+
 
 function Popular() {
     const [popularMedia, setPopularMedia] = useState(null);
@@ -24,16 +26,13 @@ function Popular() {
     },[mediaType])
 
   return (
-
-        <div className='container mx-auto popular relative mt-[50px]'>
-            <div className='popular-header flex justify-between mr-5 mb-3'>
-                <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Popular</h3>
+        <div className='carousel__container'>
+            <div className='carousel__header'>
+                <h3 className='carousel__header-title'>Popular</h3>
                 <SwitchTabs setMediaType={setMediaType} mediaType={mediaType}/>
             </div>
                 <Carousel data = {popularMedia} mediaType = {mediaType} />
         </div>
-      
-    
   )
 }
 

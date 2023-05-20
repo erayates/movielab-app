@@ -43,7 +43,7 @@ function App() {
     <BrowserRouter>
         <Header/>
         
-    
+        <main>
         <Routes >
           <Route path="/" exact element={<Home />} />
           <Route path="/:mediaType/:id" element={<Details />} />
@@ -53,6 +53,7 @@ function App() {
           <Route path='/tv-series' element={<TVSeries/>} />
           <Route path="*" element={<Page404 />} />
         </Routes>
+        </main>
       <Footer/>
     </BrowserRouter>
   )

@@ -5,6 +5,7 @@ import './style.css'
 import { getTrending } from '../../../store/homeSlicer'
 import SwitchTabs from '../SwitchTabs'
 import Carousel from '../../../components/Carousel/Carousel'
+import '../../../styles/globals.css'
 
 function Trending() {
     
@@ -12,8 +13,6 @@ function Trending() {
     const [dateRange, setDateRange] = useState('day')
     const dispatch = useDispatch();
     const {trending} = useSelector((state) => state.home)
-
- 
 
    useEffect(() => {
         setTrendingMovies(trending.results)
@@ -26,12 +25,12 @@ function Trending() {
 
 
   return (
-    <div className='container mx-auto trending relative mt-10'>
-        <div className='trending-header flex justify-between mr-5 mb-3'>
-            <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Trending Movies</h3>
+    <div className='carousel__container'>
+        <div className='carousel__header'>
+            <h3 className="carousel__header-title">Trending Movies</h3>
             <SwitchTabs setDateRange={setDateRange} dateRange={dateRange}/>
         </div>
-            <Carousel data = {trendingMovies} mediaType='movie' />
+            <Carousel data={trendingMovies} mediaType='movie' />
     </div>
   )
 }

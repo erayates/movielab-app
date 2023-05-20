@@ -5,7 +5,7 @@ import SwitchTabs from '../SwitchTabs'
 import { getTopRated } from '../../../store/homeSlicer'
 
 import Carousel from '../../../components/Carousel/Carousel'
-
+import '../../../styles/globals.css'
 
 function TopRated() {
     const [topRatedMedias, setTopRatedMedias] = useState(null);
@@ -28,9 +28,9 @@ function TopRated() {
 
     return (
 
-        <div className='container mx-auto top-rated relative mt-[50px]'>
-            <div className='top-rated-header flex justify-between mr-5 mb-3'>
-                <h3 className='text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500'>Top Rated</h3>
+        <div className='carousel__container'>
+            <div className='carousel__header'>
+                <h3 className='carousel__header-title'>Top Rated</h3>
                 <SwitchTabs setMediaType={setMediaType} mediaType={mediaType} />
             </div>
             <Carousel data={topRatedMedias} mediaType={mediaType}/>

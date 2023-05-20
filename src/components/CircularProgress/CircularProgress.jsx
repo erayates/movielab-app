@@ -2,12 +2,12 @@ import React from 'react'
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar'
 
 
-const CircularProgress = ({ value }) => {
+const CircularProgress = ({ value, className}) => {
     return (
         <CircularProgressbar
             value={value * 10}
             text={value.toFixed(1)}
-            className='w-[60px] h-[60px] mt-3 absolute bottom-[20%] right-[-15px] z-30'
+            className={className || ''}
             background
             backgroundPadding={6}
             styles={buildStyles({

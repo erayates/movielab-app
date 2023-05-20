@@ -3,7 +3,13 @@
     @apply bg-[#01b4e4] text-white text-[14px] font-medium w-auto lg:w-72 p-2 mx-5 mt-10 rounded-xl
 }
 
-/* Header - Aside */
+/**********************
+    Header - Aside
+**********************/
+.header{
+    @apply fixed w-20 lg:w-96 h-full 
+}
+
 .sidebar{
     @apply items-center h-full flex flex-col w-full py-[50px]
 }
@@ -46,5 +52,25 @@
 
 .sidebar__menu-list-item-text{
     @apply hidden lg:inline-block
+}
+
+
+/******************
+        HOME
+******************/
+.home{
+    @apply relative ml-[5rem] pt-16 pl-8 pr-8 md:w-auto  md:ml-24 lg:ml-96 md:p-16 
+}
+
+.carousel__container{
+    @apply container mx-auto relative mt-[50px]
+}
+
+.carousel__header{
+    @apply  flex justify-between items-center mr-5 mb-3
+}
+
+.carousel__header-title{
+    @apply  text-[16px] md:text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500
 }
 

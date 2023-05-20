@@ -53,7 +53,7 @@ function Carousel({ data, mediaType }) {
                                     {movieGenreList.map((genre) => <span key={nanoid()} className=' bg-red-600 m-1 py-1 px-2 text-white text-[12px] rounded-lg '>{genre}</span>)}
                                 </div>
                             </div>
-                            <CircularProgress value={item.vote_average} />
+                            <CircularProgress value={item.vote_average} className={'w-[60px] h-[60px] mt-3 absolute bottom-[20%] right-[-15px] z-30'}/>
                            
                             <div className='w-full h-1/4 flex flex-col pt-3 bg-[#151515] p-4 rounded-b-2xl'>
                                 <h3 className='text-white text-[13px] font-semibold'>{mediaType === 'movie' ? item.title : item.name}</h3>
