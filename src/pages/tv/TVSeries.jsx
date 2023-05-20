@@ -36,15 +36,15 @@ const TVSeries = () => {
     }
 
     return (
-        <section className='movies ml-96 p-16 pt-8'>
-            <h1 className="movies-title text-[64px] text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-blue-500">Latest TV Series</h1>
-            <p className='movies-subtitle mt-[-20px] mb-6 font-normal text-white/50 text-[14px]'>List of TV shows airing today.</p>
+        <section className='movies ml-20 lg:ml-96 p-8 md:p-16 pt-16'>
+            <h1 className="movies-title text-[48px] leading-[50px] md:leading-none md:text-[64px] text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-blue-500">Latest TV Series</h1>
+            <p className='movies-subtitle mt-[-10px] md:mt-[-20px] mb-6 font-normal text-white/50 text-[14px] pt-5'>List of TV shows airing today.</p>
             <div className='movies-container flex flex-wrap w-full justify-center'>
             {pageData.length > 0 &&
                 pageData.map((item) => {
                     const movieGenreList = getMovieGenres(item);
                     return(
-                    <div className=' w-[150px] h-[250px]  md:w-[200px] md:h-[350px] bg-transparent rounded-t-2xl my-5 mr-[1.99rem] relative cursor-pointer' key={item.id} onClick={() => navigate(`/tv/${item.id}`)}>
+                    <div className='w-[200px] h-[350px] bg-transparent rounded-t-2xl my-5 mr-[1.99rem] relative cursor-pointer' key={item.id} onClick={() => navigate(`/tv/${item.id}`)}>
                         <div className='w-full h-3/4 bg-black bg-opacity-50 rounded-2xl'>
                             <Img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" className='w-full h-full object-cover rounded-t-2xl ' />
                             <div className='genre-list flex flex-wrap flex-auto absolute top-[0] p-1 w-full'>

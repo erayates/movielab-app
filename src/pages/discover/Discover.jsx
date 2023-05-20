@@ -34,7 +34,7 @@ export default function Discover() {
                 <h2 className='text-[24px] md:text-[36px] font-semibold'>{item.original_title}</h2>
                 <p className='text-[14px] md:text-[16px] font-normal text-[#7d7d7d] mb-4'>{item.overview}</p>
                 <div className='flex items-center'>
-                  <CircularProgress value={item.vote_average}  className={'w-[45px] h-[45px] mr-3  z-30'}/>
+                  <CircularProgress value={item.vote_average}  className={'w-[45px] h-[45px] mr-3 z-30'}/>
                   <button className='bg-white text-[#151515] px-4 rounded-2xl font-semibold text-[12px] z-30 cursor-pointer h-[40px]' onClick={console.log('btn clicked')}>
                     Go To Details
                   </button>

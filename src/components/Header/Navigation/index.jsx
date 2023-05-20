@@ -38,7 +38,7 @@ function Navigation() {
               </span>
             </Link>
           </li>
-          
+
           <li className="sidebar__menu-list-item">
             <Link to='/discover'>
               <DiscoverIcon />
@@ -49,8 +49,8 @@ function Navigation() {
           </li>
 
           <li className="sidebar__menu-list-item">
-            <TvIcon />
             <Link to='/tv-series'>
+              <TvIcon />
               <span className="hidden lg:inline-block">
                 TV Shows
               </span>
@@ -58,8 +58,8 @@ function Navigation() {
           </li>
 
           <li className="sidebar__menu-list-item">
-            <MovieIcon />
             <Link to='/movies'>
+              <MovieIcon />
               <span className="hidden lg:inline-block">
                 Movies
               </span>
@@ -81,8 +81,8 @@ function Navigation() {
           </li>
         </ul>
       </div>
-      
-      <LoginBtn/>
+
+      <LoginBtn />
     </aside>
   )
 }
