@@ -6,7 +6,7 @@ const CircularProgress = ({ value, className}) => {
     return (
         <CircularProgressbar
             value={value * 10}
-            text={value.toFixed(1)}
+            text={parseFloat(value).toFixed(1)}
             className={className || ''}
             background
             backgroundPadding={6}

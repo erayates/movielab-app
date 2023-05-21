@@ -4,7 +4,7 @@ import './styles.css'
 function Footer() {
   return (
 
-    <footer className='footer bg-[#151515] ml-96'>
+    <footer className='footer bg-[#151515] ml-20 lg:ml-96'>
       <div className='container mx-auto p-10 flex'>
         <div className='border-r-2 border-white w-1/2 items-end flex flex-col pr-5'>
           <h1 class="font-bold text-uppercase text-transparent text-[32px]">

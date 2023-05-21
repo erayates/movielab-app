@@ -15,9 +15,6 @@ function TopRated() {
 
     const { topRated } = useSelector((state) => state.home)
 
-
-
-
     useEffect(() => {
         setTopRatedMedias(topRated.results)
     }, [topRated])
@@ -27,16 +24,16 @@ function TopRated() {
     }, [mediaType])
 
     return (
-
         <div className='carousel__container'>
             <div className='carousel__header'>
-                <h3 className='carousel__header-title'>Top Rated</h3>
+                <div>
+                    <h3 className='carousel__title'>Top Rated</h3>
+                    <p className='carousel__subtitle'>The most popular TV shows or movies of all time</p>
+                </div>
                 <SwitchTabs setMediaType={setMediaType} mediaType={mediaType} />
             </div>
-            <Carousel data={topRatedMedias} mediaType={mediaType}/>
+            <Carousel data={topRatedMedias} mediaType={mediaType} />
         </div>
-
-
     )
 }
 

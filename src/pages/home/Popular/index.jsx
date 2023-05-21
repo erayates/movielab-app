@@ -1,5 +1,5 @@
-import {useEffect,useState} from 'react'
-import { useSelector,useDispatch} from 'react-redux'
+import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import SwitchTabs from '../SwitchTabs'
 
 import { getPopular } from '../../../store/homeSlicer'
@@ -11,29 +11,32 @@ import '../../../styles/globals.css'
 function Popular() {
     const [popularMedia, setPopularMedia] = useState(null);
     const [mediaType, setMediaType] = useState('movie');
-    
+
     const dispatch = useDispatch();
 
-    const {popular} = useSelector((state) => state.home)
+    const { popular } = useSelector((state) => state.home)
 
 
     useEffect(() => {
         setPopularMedia(popular.results)
-    },[popular])
+    }, [popular])
 
     useEffect(() => {
         dispatch(getPopular(mediaType))
-    },[mediaType])
+    }, [mediaType])
 
-  return (
+    return (
         <div className='carousel__container'>
             <div className='carousel__header'>
-                <h3 className='carousel__header-title'>Popular</h3>
-                <SwitchTabs setMediaType={setMediaType} mediaType={mediaType}/>
+                <div>
+                    <h3 className='carousel__title'>Popular</h3>
+                    <p className='carousel__subtitle'>List of latest popular TV series or movies</p>
+                </div>
+                <SwitchTabs setMediaType={setMediaType} mediaType={mediaType} />
             </div>
-                <Carousel data = {popularMedia} mediaType = {mediaType} />
+            <Carousel data={popularMedia} mediaType={mediaType} />
         </div>
-  )
+    )
 }
 
 export default Popular

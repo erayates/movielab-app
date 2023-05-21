@@ -10,6 +10,8 @@ const Img = ({src,className }) => {
             alt=''
             src={src} // use normal <img> attributes as props
             effect='blur'
+            width={"100%"}
+            height={"100%"}
         />
     )
 } ;

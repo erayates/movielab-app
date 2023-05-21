@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Carousel from '../../../components/Carousel/Carousel'
 import { fetchData } from '../../../utils/api'
+import '../../../styles/globals.css'
 
 
 
@@ -15,10 +16,18 @@ function Recommendations({ mediaType, id }) {
   }, [id])
 
 
+
   return (
-    <div className='details-recommendations container mx-auto relative'>
-      <h2 class="text-[20px] inline-block text-transparent bg-clip-text bg-gradient-to-r font-bold from-white to-orange-500 mt-[50px]">Recommendations</h2>
-      <Carousel data={recommendations} mediaType={mediaType} />
+    <div className='details__section'>
+      <h2 class="carousel__title">Recommandations</h2>
+      <p class="carousel__subtitle">Similar movies for this TV series or movie</p>
+      {recommendations !== [] ? <Carousel data={recommendations} mediaType={mediaType} /> : (
+        <div className='recommendations-not-found flex flex-col text-center items-center justify-center mt-20'>
+          <h1 className='text-[24px] text-white font-bold'>No Recommendations Found!</h1>
+          <p className='text-[#888888] text-[14px] mt-2'>We couldn't find any recommendations for this movie.</p>
+        </div>
+      )}
+      
     </div>
   )
 }
