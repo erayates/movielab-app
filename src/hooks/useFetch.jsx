@@ -10,8 +10,8 @@ export const useFetch = (url) => {
         setLoading('Loading...');
         fetchData(url)
             .then((res) => {
-                setLoading(false);
                 setData(res);
+                setLoading(false);
             })
             .catch(err => {
                 setLoading(false);

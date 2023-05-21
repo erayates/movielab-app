@@ -1,70 +1,76 @@
 import React, { useState, useEffect } from 'react'
+import { useTransition, animated, useSpringRef } from '@react-spring/web'
 
 import './style.css'
 import { fetchData } from '../../utils/api'
+import CircularProgress from '../../components/CircularProgress/CircularProgress'
+import ClickIcon from '../../components/Icons/ClickIcon'
 
-import ListItem from '../../components/ListItem/ListItem'
-import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
-import { useSelector } from 'react-redux'
-import Img from '../../components/LazyLoadImage/img'
-import { nanoid } from 'nanoid'
-import dayjs from 'dayjs'
+import WatchTrailerBtn from '../../components/Buttons/WatchTrailerBtn'
+import '../../styles/globals.css'
+
+const pages = []
 
 export default function Discover() {
-  const [data, setData] = useState([]);
+  const [index, set] = useState(0)
+  const handlePageChange = () => set((state) => index < pages.length ? state + 1 : 0 )
+  const transRef = useSpringRef()
+  const transitions = useTransition(index, {
+    ref: transRef,
+    keys: null,
+    from: { opacity: 0, transform: 'translate3d(100%,0,0)' },
+    enter: { opacity: 1, transform: 'translate3d(0%,0,0)' },
+    leave: { opacity: 0, transform: 'translate3d(-50%,0,0)' },
+  })
 
   useEffect(() => {
     fetchData('/discover/movie').then(response => {
-      setData(response.results)
+      response.results.map((item, idx) => {
+        pages.push(({ style }) => <animated.div key={idx}
+          className='relative ml-20 w-full lg:ml-[24rem]'
+          style={{ ...style }}>
+          <div className='w-full h-full relative bg-no-repeat bg-center bg-cover' style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${item.backdrop_path})`, backgroundColor: 'rgba(0,0,0,0.8)', backgroundBlendMode: 'darken', }}>
+            <div className=' h-full w-full md:w-[600px] bg-black/50 flex items-center' >
+              <div className='md:w-[400px] p-6 md:p-12'>
+                <h2 className='text-[24px] md:text-[36px] font-semibold'>{item.original_title}</h2>
+                <p className='text-[14px] md:text-[16px] font-normal text-[#7d7d7d] mb-4'>{item.overview}</p>
+                <div className='flex items-center'>
+                  <CircularProgress value={item.vote_average}  className={'w-[45px] h-[45px] mr-3 z-30'}/>
+                  <button className='bg-white text-[#151515] px-4 rounded-2xl font-semibold text-[12px] z-30 cursor-pointer h-[40px]' onClick={console.log('btn clicked')}>
+                    Go To Details
+                  </button>
+                </div>
+                  <WatchTrailerBtn randomData={item}/>
+              </div>
+            </div>
+            <div className='order absolute right-[30px] bottom-[30px] md:right-[50px] md:bottom-[50px]'>
+              <h2 className='text-[48px] md:text-[96px] text-white/50 font-bold text-right'>{idx+1}</h2>
+              <p className=' animate-bounce font-semibold text-[12px] md:text-[16px]'>
+                <ClickIcon />
+                Click the screen to swipe!
+              </p>
+            </div>
+          </div>
+
+
+        </animated.div>)
+
+      })
     })
   }, [])
-  
-  const { genres } = useSelector((state) => state.home)
-
-  const getMovieGenres = (item) => {
-      const movieGenreList = [];
-      if (genres.length > 0) {
-          genres.map((genre) => {
-              item.genre_ids.map((id) => {
-                  genre.id === id && movieGenreList.push(genre.name);
-              })
-          })
-      }
-      return movieGenreList;
-  }
-
-
+  useEffect(() => {
+    transRef.start()
+  }, [index])
   return (
-    <ResponsiveMasonry className='discover relative ml-20  lg:ml-[24rem]'>
-      <Masonry columnsCount={4}>
-        {
-          data.length > 0 &&
-          data.map((item) => {
-            const movieGenreList = getMovieGenres(item)
-            return (
-              <div className='movies__content-container' key={item.id}>
-                <div className='movies__content'>
-                  <Img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" className='w-full h-full object-cover' />
-                  <div className='genre-list flex flex-wrap flex-auto absolute top-[0] p-1 w-full'>
-                    {movieGenreList.map((genre) => <span key={nanoid()} className=' bg-red-600 m-1 py-1 px-2 text-white text-[12px] '>{genre}</span>)}
-                  </div>
-
-                  <div className='w-full absolute bottom-0 left-0 flex flex-col pt-3 p-4 z-30'>
-                    <h3 className='text-white text-[16px] font-semibold'>{item.title}</h3>
-                    <p className=' text-gray-400 text-[14px]'>{dayjs(item.release_date).format('MMM D, YYYY')}</p>
-                  </div>
-
-                </div>
-
-              </div>
-            )
-          })
-        }
-      </Masonry>
-
-   
-    </ResponsiveMasonry>
+    <div className={`flex fill discover-container`} onClick={handlePageChange}>
+      {pages.length > 0 &&
+        transitions((style, i) => {
+          const Page = pages[i]
+          return (
+            <Page style={style} />
+          )
+        })
+      }
+    </div>
   )
-
 }
-

@@ -11,7 +11,7 @@ const Movies = () => {
     const [page, setPage] = useState(1);
     const [rawData, setRawData] = useState({})
     const [pageData, setPageData] = useState([])
-  
+
     useEffect(() => {
         fetchData(`/movie/now_playing?language=en-US&page=${page}`).then((res) => {
             setRawData(res)
@@ -24,9 +24,9 @@ const Movies = () => {
         <section className='movies'>
             <h1 className="movies__title">Latest Movies</h1>
             <p className='movies__subtitle'>Check out all the movies released in the last 14 days!</p>
-            
-            <ListItem pageData={pageData} />
-
+            <div className='movies__container'>
+                <ListItem pageData={pageData} />
+            </div>
             <hr className='opacity-20 mt-5' />
             <Pagination setPage={setPage} page={page} totalPage={rawData.total_pages} totalMovies={rawData.total_results} />
         </section>

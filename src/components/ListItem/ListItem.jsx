@@ -7,7 +7,7 @@ import dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
 
 
-const ListItem = ({pageData}) => {
+const ListItem = ({ pageData }) => {
     const navigate = useNavigate();
     const { genres } = useSelector((state) => state.home)
 
@@ -24,8 +24,9 @@ const ListItem = ({pageData}) => {
     }
 
     return (
-        <div className='movies__container'>
-            {pageData.length > 0 &&
+        <>
+        {
+            pageData.length > 0 &&
                 pageData.map((item) => {
                     const movieGenreList = getMovieGenres(item);
                     return (
@@ -36,7 +37,7 @@ const ListItem = ({pageData}) => {
                                     {movieGenreList.map((genre) => <span key={nanoid()} className=' bg-red-600 m-1 py-1 px-2 text-white text-[12px]'>{genre}</span>)}
                                 </div>
                                 <div className='movies__info'>
-                                    <h3 className='movies__info-title'>{item.name ||item.original_title}</h3>
+                                    <h3 className='movies__info-title'>{item.name || item.original_title}</h3>
                                     <p className='movies__info-date'>{dayjs(item.release_date).format('MMM D, YYYY')}</p>
                                 </div>
                                 <div class="carousel__item-average">{item.vote_average.toFixed(1)}</div>
@@ -44,8 +45,8 @@ const ListItem = ({pageData}) => {
                         </div>
                     )
                 })
-            }
-        </div>
+        }
+        </>
     )
 }
 

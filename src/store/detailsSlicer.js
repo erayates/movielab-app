@@ -14,7 +14,8 @@ const detailsSlice = createSlice({
     initialState: {
         details:[],
         videoPopupOpen: false,
-        videoId: ''
+        videoId: '',
+        
     },
 
 
