@@ -16,7 +16,7 @@ const WatchTrailerBtn = ({randomData}) => {
         })
     }
     return (
-        <button className='bg-red-600 text-white py-2 px-6 mt-3 rounded-lg shadow-lg shadow-red-600 block text-[12px] md:text-[16px] animate-pulse' onClick={handleTrailerBtn}>
+        <button className='bg-red-600 text-white py-2 px-6 rounded-lg shadow-lg shadow-red-600 block text-[12px] md:text-[16px] animate-pulse' onClick={handleTrailerBtn}>
             <BtnPlayIcon />
             Watch The Trailer
         </button>

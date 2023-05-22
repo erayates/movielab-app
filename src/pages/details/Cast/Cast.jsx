@@ -1,46 +1,45 @@
 import { useState, useEffect } from 'react'
 import { fetchData } from '../../../utils/api';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCasts } from '../../../store/detailsSlicer';
 
 function Cast({ mediaType, id }) {
-    const [cast, setCast] = useState(null);
+    const dispatch = useDispatch();
+
+    const {casts} = useSelector((state) => state.details)
 
     useEffect(() => {
-        fetchData(`/${mediaType}/${id}/credits`).then((response) => {
-            setCast(response)
-        })
-    }, [id])
+        dispatch(getCasts({mediaType,id}))
+    }, [mediaType,id])
 
-
-    const scrollLeft = (e) => {
+    const scrollLeft = () => {
         document.querySelector('.cast-list').scrollLeft -= 250
     }
-    const scrollRight = (e) => {
+    const scrollRight = () => {
         document.querySelector('.cast-list').scrollLeft += 250
     }
-
-
 
     return (
         <>
             <h1 class="carousel__title">Casts</h1>
             <p class="carousel__subtitle">All actors of this series or movie</p>
-            <div className='details-cast bg-[#151515] relative'>
-                <BsFillArrowLeftCircleFill className='text-white  text-[30px] hidden md:block cursor-pointer z-30 absolute left-[-10px] top-[45%]' onClick={(e) => scrollLeft(e)} />
-                <div className='cast-list flex overflow-x-hidden scroll-smooth'>
-                    {cast?.cast.map((item) => (
-                        <div className='cast-item flex flex-col' key={item.id}>
-                            <div className='w-[250px] h-[350px] relative'>
-                                <img src={`https://image.tmdb.org/t/p/original${item.profile_path}`} alt="No Image Founded!" className='w-full h-full object-cover opacity-30 hover:opacity-75' />
-                                <div className='absolute bottom-[20px] left-[20px]'>
-                                    <p className='text-white text-[20px] mt-2 font-semibold '>{item.name}</p>
-                                    <p className='text-[#888888] text-[14px] mt-1 '>{item.character}</p>
+            <div className='details__cast'>
+                <BsFillArrowLeftCircleFill className='carousel__left-arrow' onClick={scrollLeft} />
+                <div className='cast-list'>
+                    {casts.length > 0 && casts.map((item) => (
+                        <div className='cast-item-container' key={item.id}>
+                            <div className='cast-item'>
+                                <img src={`https://image.tmdb.org/t/p/original${item.profile_path}`} alt="No Image Founded!" className='cast-item-img' />
+                                <div className='cast-item-content'>
+                                    <p className='cast-item-title'>{item.name}</p>
+                                    <p className='cast-item-subtitle'>{item.character}</p>
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <BsFillArrowRightCircleFill className='text-white  text-[30px] hidden md:block cursor-pointer z-30 absolute right-[-10px] top-[45%]' onClick={(e) => scrollRight(e)} />
+                <BsFillArrowRightCircleFill className='carousel__right-arrow' onClick={scrollRight} />
             </div>
         </>
     )

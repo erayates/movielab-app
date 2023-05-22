@@ -7,11 +7,11 @@ function Footer() {
     <footer className='footer bg-[#151515] ml-20 lg:ml-96'>
       <div className='container mx-auto p-10 flex'>
         <div className='border-r-2 border-white w-1/2 items-end flex flex-col pr-5'>
-          <h1 class="font-bold text-uppercase text-transparent text-[32px]">
-            <span class="uppercase text-white">Movie</span>
-            <span class="uppercase text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">.Lab</span>
+          <h1 className="font-bold text-uppercase text-transparent text-[32px]">
+            <span className="uppercase text-white">Movie</span>
+            <span className="uppercase text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">.Lab</span>
           </h1>
-          <span class="text-white text-[12px] mt-[-10px]">Discover, share and watch!</span>
+          <span className="text-white text-[12px] mt-[-10px]">Discover, share and watch!</span>
         </div>
         <div className='w-1/2 flex flex-col ml-5 text-white'>
           <p className='font-semibold font-dancing-script text-[20px]'>Designed by Eray Ates.</p>

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useSearchParams } from 'react-router-dom'
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchData } from '../../utils/api';
 
@@ -15,38 +15,34 @@ import VideoPopup from '../../components/VideoPopup';
 
 import '../../styles/globals.css'
 import DetailsBanner from "./DetailsBanner";
+import { scrollToTop } from '../../utils/helpers';
+import { getDetails } from '../../store/detailsSlicer';
 
 
 function Details() {
   const { mediaType, id } = useParams();
-  const [mediaDetails, setMediaDetails] = useState(null);
-  const {videoPopupOpen} = useSelector((state) => state.details)
 
+  const {videoPopupOpen,details} = useSelector((state) => state.details)
 
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    window.scrollTo({
-      top:'0',
-      behavior: 'smooth'
-    })
-    fetchData(`/${mediaType}/${id}`).then((response) => {
-      setMediaDetails(response)
-    })
+    scrollToTop();
+    dispatch(getDetails({mediaType,id}))
   }, [id])
 
 
- 
   return (
     <>
     <section className='details'>
-     
-      <DetailsBanner mediaDetails={mediaDetails} mediaType={mediaType} id={id}/>
+      <>
+      <DetailsBanner mediaDetails={details} mediaType={mediaType} id={id}/>
       <Cast mediaType={mediaType} id={id} />
       <Videos mediaType={mediaType} id={id} />
-      <Recommendations mediaType={mediaType} id={id} />
+      <Recommendations mediaType={mediaType} id={id}/>
       <SimilarMovies mediaType={mediaType} id={id} />
       {videoPopupOpen && <VideoPopup />}
-
+      </>
     </section>
     </>
   )

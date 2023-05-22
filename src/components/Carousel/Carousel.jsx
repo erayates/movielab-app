@@ -15,10 +15,10 @@ function Carousel({ data, mediaType }) {
     const navigate = useNavigate();
 
     const scrollLeft = (e) => {
-        e.target.parentNode.parentNode.children[2].scrollLeft -= 242
+        e.target.parentNode.parentNode.children[3].scrollLeft -= 242
     }
     const scrollRight = (e) => {
-        e.target.parentNode.parentNode.children[2].scrollLeft += 242
+        e.target.parentNode.parentNode.children[3].scrollLeft += 242
     }
 
     const { genres } = useSelector((state) => state.home)

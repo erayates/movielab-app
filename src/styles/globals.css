@@ -90,6 +90,8 @@
     z-index: 20;
 }
 
+
+
 .herobanner__img-container{
     @apply w-full h-full absolute top-0 left-0 opacity-70 overflow-hidden  backdrop-blur-md
 }
@@ -134,17 +136,47 @@
     @apply flex flex-col lg:flex-row
 }
 
-.details__header-poster {
-    @apply w-full h-full relative rounded-2xl
+.details__header-poster { 
+    @apply w-full h-full rounded-2xl absolute left-0 top-0 opacity-50
 }
 
 .details__header-poster-img {
     @apply w-full h-full object-cover object-center
 }
 
-.details__header-overview {
-    @apply w-full lg:w-3/4 h-full p-6 lg:p-16  lg:mt-0
+.details__overview {
+    @apply w-full lg:w-3/4 h-full p-6 lg:p-16  lg:mt-0  z-30
 }
+
+.details__overview-title{
+    @apply text-white text-[32px] mb-5 font-semibold
+}
+
+.details__overview-info{
+    @apply flex items-center flex-row
+}
+
+
+.details__content{
+    @apply mt-5
+}
+
+.details__content-title{
+    @apply text-white text-[16px] md:text-[24px] 
+}
+
+.details__content-subtitle{
+    @apply text-[#888888] text-[14px] md:text-[16px]
+}
+
+.details__content-info{
+    @apply  mt-10 text-[#888888]
+}
+
+.details__content-info-title{
+    @apply text-white text-[14px] md:text-[16px]  mr-5 
+}
+
 
 .video__item::before {
     content: "";
@@ -169,7 +201,7 @@
     top: 0;
 }
 
-.details__header-overview{
+.details__overview{
     background-image: linear-gradient(-90deg,
     rgba(0, 0, 0, 0.0) 0%,
     rgba(0, 0, 0, 0.1) 10%,
@@ -186,7 +218,7 @@
 }
 
 /*********************
-    CAROUSEL
+        CAROUSEL
 **********************/
 .carousel__item{
     @apply flex-grow-0 flex-shrink-0  w-[242px] h-[350px] bg-transparent   relative cursor-pointer
@@ -238,10 +270,54 @@
     @apply flex flex-col sm:flex-row justify-between items-center md:items-baseline mb-3
 }
 
+.carousel__left-arrow{
+    @apply text-white  text-[30px] hidden md:block cursor-pointer z-30 absolute left-[-10px] top-[45%]
+}
+
+.carousel__right-arrow{
+    @apply text-white  text-[30px] hidden md:block cursor-pointer z-30 absolute right-[-10px] top-[45%]
+}
+
+
+/************************
+    DETAILS - CAST
+*************************/
+.cast-list{
+    @apply  flex overflow-x-hidden scroll-smooth
+}
+
+.cast-item-container{
+    @apply  flex flex-col
+}
+
+.cast-item{
+    @apply w-[250px] h-[350px] relative
+}
+
+.cast-item-img{
+    @apply w-full h-full object-cover opacity-30 hover:opacity-75
+}
+
+.cast-item-content{
+    @apply absolute bottom-[20px] left-[20px]
+}
+
+.cast-item-title{
+    @apply text-white text-[20px] mt-2 font-semibold 
+}
+
+.cast-item-subtitle{
+    @apply text-[#888888] text-[14px] mt-1 font-semibold
+}
+
+
 
 /***************************
     RECOMMENDATIONS
 ****************************/
+.details__cast{
+    @apply bg-[#151515] relative
+}
 .details__section{
     @apply  container mx-auto relative
 }
@@ -330,3 +406,12 @@
 /*************************
         DISCOVER
 **************************/
+
+
+
+/*************************
+        404 PAGE
+**************************/
+.page__404{
+    @apply ml-96 h-[100vh] flex flex-col items-center justify-center
+}
