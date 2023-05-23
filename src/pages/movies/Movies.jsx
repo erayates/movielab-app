@@ -35,7 +35,7 @@ const Movies = () => {
             <h1 className="movies__title">Latest Movies</h1>
             <p className='movies__subtitle'>Check out all the movies released in the last 14 days!</p>
             <div className='movies__container'>
-                <ListItem pageData={pageData} />
+                <ListItem pageData={pageData} mediaType={'movie'}/>
             </div>
             <hr className='opacity-20 mt-5' />
             <Pagination setPage={setPage} page={page} totalPage={rawData.total_pages} totalMovies={rawData.total_results} />

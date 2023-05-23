@@ -15,10 +15,11 @@ function Carousel({ data, mediaType }) {
     const navigate = useNavigate();
 
     const scrollLeft = (e) => {
-        e.target.parentNode.parentNode.children[3].scrollLeft -= 242
+
+        e.target.parentNode.parentNode.children[2].scrollLeft -= 242
     }
     const scrollRight = (e) => {
-        e.target.parentNode.parentNode.children[3].scrollLeft += 242
+        e.target.parentNode.parentNode.children[2].scrollLeft += 242
     }
 
     const { genres } = useSelector((state) => state.home)
@@ -37,7 +38,7 @@ function Carousel({ data, mediaType }) {
 
     return (
         <>
-            <BsFillArrowLeftCircleFill className='carousel__left-arrow' onClick={(e) => scrollLeft(e)} />
+        <BsFillArrowLeftCircleFill className='carousel__left-arrow top-[65%]' onClick={(e) => scrollLeft(e)} />
             <div className='carousel'>
                 {data?.map((item) => {
                     const movieGenreList = getMovieGenres(item)
@@ -58,7 +59,7 @@ function Carousel({ data, mediaType }) {
                     )
                 })}
             </div>
-            <BsFillArrowRightCircleFill className='carousel__right-arrow' onClick={(e) => scrollRight(e)} background={true} />
+            <BsFillArrowRightCircleFill className='carousel__right-arrow top-[65%]' onClick={(e) => scrollRight(e)} background={true} />
         </>
     )
 }

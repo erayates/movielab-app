@@ -6,7 +6,7 @@ import dayjs from 'dayjs'
 import { useNavigate } from 'react-router-dom'
 
 
-const ListItem = ({ pageData }) => {
+const ListItem = ({ pageData,mediaType}) => {
     const navigate = useNavigate();
     const { genres } = useSelector((state) => state.home)
 
@@ -21,6 +21,8 @@ const ListItem = ({ pageData }) => {
         }
         return movieGenreList;
     }
+
+    console.log(pageData)
     return (
         <>
         {
@@ -28,7 +30,7 @@ const ListItem = ({ pageData }) => {
                 pageData.map((item) => {
                     const movieGenreList = getMovieGenres(item);
                     return (
-                        <div className='movies__content-container' key={item.id} onClick={() => navigate(`/movie/${item.id}`)}>
+                        <div className='movies__content-container' key={item.id} onClick={() => navigate(`/${mediaType}/${item.id}`)}>
                             <div className='movies__content'>
                                 <Img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="" className='w-full h-full object-cover' />
                                 <div className='genre-list flex flex-wrap flex-auto absolute top-[0] p-1 w-full'>

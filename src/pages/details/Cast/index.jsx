@@ -39,7 +39,7 @@ function Cast({ mediaType, id }) {
                         </div>
                     ))}
                 </div>
-                <BsFillArrowRightCircleFill className='carousel__right-arrow' onClick={scrollRight} />
+                <BsFillArrowRightCircleFill className='carousel__right-arrow ' onClick={scrollRight} />
             </div>
         </>
     )

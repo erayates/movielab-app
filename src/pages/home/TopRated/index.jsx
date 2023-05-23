@@ -10,7 +10,6 @@ import '../../../styles/globals.css'
 function TopRated() {
     const [topRatedMedias, setTopRatedMedias] = useState(null);
     const [mediaType, setMediaType] = useState('movie');
-    console.log('mediaType')
     const dispatch = useDispatch();
 
     const { topRated } = useSelector((state) => state.home)

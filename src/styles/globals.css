@@ -153,7 +153,7 @@
 }
 
 .details__banner {
-    @apply flex flex-col lg:flex-row
+    @apply flex flex-col lg:flex-row z-0
 }
 
 .details__header-poster { 
@@ -241,7 +241,7 @@
         CAROUSEL
 **********************/
 .carousel{
-    @apply flex overflow-x-auto overflow-y-hidden scroll-smooth 
+    @apply flex overflow-x-auto overflow-y-hidden scroll-smooth relative
 }
 
 
@@ -317,7 +317,7 @@
 }
 
 .carousel__container {
-    @apply container mx-auto relative 
+    @apply container mx-auto relative
 }
 
 .carousel__header {
@@ -325,11 +325,11 @@
 }
 
 .carousel__left-arrow{
-    @apply text-white  text-[30px] hidden md:block cursor-pointer z-30 absolute left-[-10px] top-[45%]
+    @apply text-white  text-[30px] block cursor-pointer z-10 absolute top-[45%] left-[-10px]
 }
 
 .carousel__right-arrow{
-    @apply text-white  text-[30px] hidden md:block cursor-pointer z-30 absolute right-[-10px] top-[45%]
+    @apply text-white  text-[30px] block cursor-pointer z-30 absolute top-[45%] right-[-10px] 
 }
 
 
@@ -395,11 +395,11 @@
     PAGINATION COMPENENT
 ****************************/
 .pagination{
-    @apply flex justify-between mt-3
+    @apply flex justify-between mt-3 lg:flex-row flex-col
 }
 
 .pagination-buttons{
-    @apply text-[14px] font-semibold
+    @apply text-[14px] font-semibold mt-3 lg:mt-0
 }
 .pagination-button{
     @apply bg-white text-[#151515] rounded-lg px-4 py-2 active:scale-105
@@ -561,11 +561,11 @@
 }
 
 .footer__container{
-    @apply container mx-auto p-10 flex
+    @apply container mx-auto p-10 flex flex-col lg:flex-row
 }
 
 .footer__left{
-    @apply border-r-2 border-white w-1/2 items-end flex flex-col pr-5
+    @apply lg:border-r-2 lg:border-white w-full lg:w-1/2 items-center lg:items-end flex flex-col lg:pr-5
 }
 
 .footer__left-title{
@@ -581,7 +581,7 @@
 }
 
 .footer__right{
-    @apply w-1/2 flex flex-col ml-5 text-white
+    @apply w-full lg:w-1/2 flex flex-col mt-5 lg:mt-0 lg:ml-5 items-center lg:items-start text-white
 }
 
 .footer__right-title{

@@ -27,7 +27,7 @@ const SearchBar = () => {
     const { videoPopupOpen } = useSelector((state) => state.details)
     return (
         <section className={videoPopupOpen ? 'absolute w-[calc(100%-24rem)] top-0 left-[24rem] p-8 lg:p-16 lg:pb-0 pb-0 z-0' : 'ml-20 lg:ml-96 lg:p-16 lg:pb-0 p-8 pb-0 z-0'}>
-            <div class="flex">
+            <div className="flex">
                 <select
                     className="search-bar-select"
                     onChange={handleMediaSelect}
@@ -42,7 +42,7 @@ const SearchBar = () => {
 
                 </select>
 
-                <div class="search-bar-input-container">
+                <div className="search-bar-input-container">
                     <input
                         type="search"
                         className="search-bar-input"

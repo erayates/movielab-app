@@ -29,7 +29,7 @@ function Videos({ mediaType, id }) {
             <p class="carousel__subtitle">All videos of this series or movie</p>
             {videos.length === 0 && <NotFound type={'videos'} />}
             <div className='details-videos bg-[#151515]'>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  w-full justify-start '>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full justify-start '>
                     {
                         videos.length > 0 &&  (
                             videos.map((item) => {
@@ -40,7 +40,7 @@ function Videos({ mediaType, id }) {
                                         <div className='play-icon absolute top-[calc(50%-25px)] left-[35%] cursor-pointer' onClick={() => handlePopup(item.key)}>
                                             <PlayIcon />
                                         </div>
-                                        <div className='mt-3 absolute bottom-0 left-0 p-4 z-30 w-full'>
+                                        <div className='mt-3 absolute bottom-0 left-0 p-4 w-full'>
                                             <p className='text-white text-[16px] font-semibold mt-2'>{item.name}</p>
                                             <p className='text-[#888888] text-[12px] mt-1'>{item.type}</p>
                                         </div>

@@ -22,7 +22,7 @@ const Pagination = ({ setPage, page, totalPage, totalMovies }) => {
                 <span className='text-[14px] text-white/50'>Showing {page} page of {totalPage} page results | Total Movies: {totalMovies}</span>
             </div>
             <div className='pagination-buttons'>
-                <button className='pagination-button mx-5' onClick={decreasePageCount}>Previous</button>
+                <button className='pagination-button mr-5 lg:mx-5' onClick={decreasePageCount}>Previous</button>
                 <button className='pagination-button' onClick={increasePageCount}>Next</button>
             </div>
         </div>
