@@ -28,10 +28,12 @@ https://movielab-app.vercel.app
  You can find libraries that I used in package.json file.
 
 ## Todos For Bugs
+```[tasklist]
 - [] Responsive setting for search bar 
 - [] Responsive setting for search bar when video is opened
 - [] In mobile view, the sidebar will be turned on and off with a button
 - [] z-index adjustment will be made for elements.
+```
   
 ## Screenshoots
 
