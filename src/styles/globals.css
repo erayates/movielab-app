@@ -7,6 +7,22 @@
     @apply font-bold text-black bg-white px-2 py-1 rounded-lg text-[12px]
 }
 
+.watch-trailer__btn{
+    @apply bg-red-600 text-white py-2 px-6 rounded-lg shadow-lg shadow-red-600 block text-[12px] md:text-[16px] animate-pulse
+}
+
+.search-bar-select{
+    @apply flex-shrink-0 z-10 px-2 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 dark:border-gray-700 dark:text-white rounded-l-lg hover:bg-gray-200 focus:outline-none focus:ring-gray-300 dark:bg-gray-600 dark:hover:bg-gray-700
+}
+
+.search-bar-input-container{
+    @apply relative w-full
+}
+
+.search-bar-input{
+    @apply block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg focus:outline-none outline-none border-l-gray-100 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500
+}
+
 /**********************
     Header - Aside
 **********************/
@@ -63,7 +79,11 @@
         HOME
 ******************/
 .home {
-    @apply relative ml-[5rem] pt-16 pl-8 pr-8 md:w-auto md:ml-24 lg:ml-96 md:p-16
+    @apply relative ml-[5rem] py-7 pl-8 pr-8 md:w-auto md:ml-20 lg:ml-96 lg:p-16 lg:pt-7
+}
+
+.herobanner{
+    @apply  w-full h-[600px] lg:h-[500px] flex relative z-0
 }
 
 .herobanner__img-container::before {
@@ -97,7 +117,7 @@
 }
 
 .herobanner__img{
-    @apply w-full h-[500px] object-cover object-center
+    @apply w-full h-[600px] lg:h-[500px] object-cover object-center
 }
 
 .herobanner__title{
@@ -129,7 +149,7 @@
     DETAILS
 *******************/
 .details {
-    @apply relative flex flex-col ml-20 lg:ml-96 pt-16 p-8 bg-no-repeat bg-cover
+    @apply relative flex flex-col ml-20 lg:ml-96 p-8 lg:pt-8  lg:p-16 bg-no-repeat bg-cover
 }
 
 .details__banner {
@@ -220,6 +240,11 @@
 /*********************
         CAROUSEL
 **********************/
+.carousel{
+    @apply flex overflow-x-auto overflow-y-hidden scroll-smooth 
+}
+
+
 .carousel__item{
     @apply flex-grow-0 flex-shrink-0  w-[242px] h-[350px] bg-transparent   relative cursor-pointer
 }
@@ -232,7 +257,36 @@
     @apply mt-[-10px] md:mt-[-20px] mb-6 font-normal text-white/50 text-[14px] pt-5
 }
 
-.carousel__item-img::before{
+.carousel__item-img-container{
+    @apply  w-full h-full
+}
+
+.carousel__item-img{
+    @apply w-full h-full object-cover
+}
+
+.carousel__content{
+    @apply w-full absolute bottom-0 left-0 flex flex-col pt-3 p-4 z-30
+}
+
+.carousel__content-title{
+    @apply text-white text-[16px] font-semibold
+}
+
+.carousel__content-date{
+    @apply text-gray-400 text-[14px]
+}
+
+
+.genre-list-box{
+    @apply  bg-red-600 m-1 py-1 px-2 text-white text-[12px]
+}
+
+.genre-list{
+    @apply  flex flex-wrap flex-auto absolute top-[0] p-1 w-full
+}
+
+.carousel__item-img-container::before{
     content: "";
     display: block;
     position: absolute;
@@ -323,7 +377,52 @@
 }
 
 
+/****************************
+    NOT FOUND COMPENENT
+*****************************/
+.not__found{
+    @apply  flex flex-col text-center items-center justify-center mt-10
+}
+.not__found-title{
+    @apply text-[16px] lg:text-[24px] text-white font-bold uppercase
+}
+.not__found-subtitle{
+    @apply text-[#888888] text-[12px] lg:text-[14px] mt-2
+}
 
+
+/****************************
+    PAGINATION COMPENENT
+****************************/
+.pagination{
+    @apply flex justify-between mt-3
+}
+
+.pagination-buttons{
+    @apply text-[14px] font-semibold
+}
+.pagination-button{
+    @apply bg-white text-[#151515] rounded-lg px-4 py-2 active:scale-105
+}
+
+
+/*****************************
+    VIDEOPOPUP COMPENENT
+******************************/
+.video-popup{
+    @apply  flex w-full justify-center items-center z-50  
+}
+
+.video-content{
+    @apply  flex w-3/4 justify-center
+}
+
+.close-btn{
+    @apply relative top-[-30px]
+}
+.close-btn-icon{
+    @apply text-white text-[30px] z-30 cursor-pointer
+}
 
 
 /*************************
@@ -406,7 +505,44 @@
 /*************************
         DISCOVER
 **************************/
+.animated__div{
+    @apply relative ml-20 w-full lg:ml-[24rem] 
+}
 
+.discover-container{
+    @apply lg:p-8 p-0 lg:pt-0
+}
+
+.discover__container{
+    @apply w-full h-full relative bg-no-repeat bg-center bg-cover 
+}
+.discover__content{
+    @apply h-full w-full md:w-[600px] bg-black/50 flex items-center
+}
+
+.discover__content-container{
+    @apply md:w-[400px] p-6 md:p-12
+}
+
+.discover__content-title{
+    @apply text-[24px] md:text-[36px] font-semibold
+}
+
+.discover__content-overview{
+    @apply text-[14px] md:text-[16px] font-normal text-[#7d7d7d] mb-4
+}
+
+.discover__info{
+    @apply absolute right-[30px] bottom-[30px] md:right-[50px] md:bottom-[50px]
+}
+
+.discover__info-order{
+    @apply text-[48px] md:text-[96px] text-white/50 font-bold text-right
+}
+
+.discover__info-title{
+    @apply animate-bounce font-semibold text-[12px] md:text-[16px]
+}
 
 
 /*************************
@@ -414,4 +550,40 @@
 **************************/
 .page__404{
     @apply ml-96 h-[100vh] flex flex-col items-center justify-center
+}
+
+
+/*************************
+        FOOTER
+**************************/
+.footer{
+    @apply bg-[#151515] ml-20 lg:ml-96
+}
+
+.footer__container{
+    @apply container mx-auto p-10 flex
+}
+
+.footer__left{
+    @apply border-r-2 border-white w-1/2 items-end flex flex-col pr-5
+}
+
+.footer__left-title{
+    @apply font-bold uppercase text-[32px]
+}
+
+.footer__left-title-span{
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600
+}
+
+.footer__left-subtitle{
+    @apply text-white text-[12px] mt-[-10px]
+}
+
+.footer__right{
+    @apply w-1/2 flex flex-col ml-5 text-white
+}
+
+.footer__right-title{
+    @apply font-semibold font-dancing-script text-[20px]
 }

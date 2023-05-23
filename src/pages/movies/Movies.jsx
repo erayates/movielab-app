@@ -6,11 +6,21 @@ import Pagination from '../../components/Pagination/Pagination';
 
 import '../../styles/globals.css'
 import ListItem from '../../components/ListItem/ListItem';
+import { useDispatch, useSelector } from 'react-redux';
+import { handleVideoPopupToggle } from '../../store/detailsSlicer';
 
 const Movies = () => {
     const [page, setPage] = useState(1);
     const [rawData, setRawData] = useState({})
     const [pageData, setPageData] = useState([])
+
+    const dispatch = useDispatch();
+
+    const {videoPopupOpen} = useSelector((state) => state.details)
+
+    useEffect(() => {
+        videoPopupOpen && dispatch(handleVideoPopupToggle());
+    },[])
 
     useEffect(() => {
         fetchData(`/movie/now_playing?language=en-US&page=${page}`).then((res) => {

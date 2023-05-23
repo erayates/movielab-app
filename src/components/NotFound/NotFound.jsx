@@ -1,10 +1,11 @@
 import React from 'react'
+import '../../styles/globals.css'
 
 const NotFound = ({type}) => {
   return (
-    <div className='recommendations-not-found flex flex-col text-center items-center justify-center mt-20'>
-          <h1 className='text-[24px] text-white font-bold uppercase'>No {type} Found!</h1>
-          <p className='text-[#888888] text-[14px] mt-2'>We couldn't find any {type} for this movie.</p>
+    <div className='not__found'>
+          <h1 className='not__found-title'>No {type} Found!</h1>
+          <p className='not__found-subtitle'>We couldn't find any {type} for this movie.</p>
     </div>
   )
 }

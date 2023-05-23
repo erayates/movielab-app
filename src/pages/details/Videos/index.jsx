@@ -23,9 +23,6 @@ function Videos({ mediaType, id }) {
         dispatch(getVideos({mediaType,id}))
     }, [mediaType,id])
 
-  
-    console.log(videos)
-
     return (
         <>
             <h2 class="carousel__title">Videos</h2>

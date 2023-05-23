@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 
 import HeroBanner from './HeroBanner/HeroBanner'
 import Trending from './Trending'
@@ -10,10 +10,18 @@ import VideoPopup from '../../components/VideoPopup'
 import '../../styles/globals.css'
 import './style.css'
 
+import { handleVideoPopupToggle } from '../../store/detailsSlicer'
+import { useEffect } from 'react'
+
 
 function Home() {
   const { videoPopupOpen } = useSelector((state) => state.details)
-  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    videoPopupOpen && dispatch(handleVideoPopupToggle());
+  },[])
+
   return (
     <section className='home'>
       <HeroBanner />

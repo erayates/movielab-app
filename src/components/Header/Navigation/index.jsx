@@ -72,9 +72,7 @@ function Navigation() {
             <div className='mt-5 hidden lg:flex lg:flex-wrap'>
               {genres.length > 0 && genres.map((genre) => {
                 return (
-                  <Link to={`/genres/${genre.id}`} key={genre.id} className=' text-[#6C6C6C] font-medium'>
-                    <span className='text-[14px] mr-2'>#{genre.name}</span>
-                  </Link>
+                    <span className='text-[14px] mr-2 text-[#6C6C6C] font-medium'>#{genre.name}</span>
                 )
               })}
             </div>

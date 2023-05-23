@@ -42,7 +42,7 @@ function App() {
   return (
     <BrowserRouter>
         <Header/>
-        
+        <SearchBar/>
         <main>
         <Routes >
           <Route path="/" exact element={<Home />} />

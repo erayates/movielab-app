@@ -2,10 +2,7 @@ import {createSlice,createAsyncThunk} from '@reduxjs/toolkit';
 
 import { fetchData } from '../utils/api';
 
-
-
 export const getDetails = createAsyncThunk('details/getDetails', async ({mediaType,id}) => {
-
     const data = await fetchData(`/${mediaType}/${id}`);
     return data;
 

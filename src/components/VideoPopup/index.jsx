@@ -22,11 +22,11 @@ function VideoPopup() {
     }
 
   return (
-    <div className='video-popup flex w-full justify-center items-center z-40  '>
-        <div className='video-content flex w-3/4 justify-center'>
+    <div className='video-popup'>
+        <div className='video-content'>
             <ReactPlayer url={video} controls={true} width='100%' height='100%'/>
-            <div className='close-btn relative top-[-30px]' onClick={handlePopup}>
-                <AiOutlineClose className='text-white text-[30px] z-30 cursor-pointer'/>
+            <div className='close-btn' onClick={handlePopup}>
+                <AiOutlineClose className='close-btn-icon'/>
             </div>
         </div>
     </div>

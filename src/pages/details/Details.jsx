@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { fetchData } from '../../utils/api';
 
-import Cast from './Cast/Cast';
+import Cast from './Cast';
 import Videos from './Videos';
 import Recommendations from './Recommendations';
 import SimilarMovies from './SimilarMovies';
@@ -16,7 +16,7 @@ import VideoPopup from '../../components/VideoPopup';
 import '../../styles/globals.css'
 import DetailsBanner from "./DetailsBanner";
 import { scrollToTop } from '../../utils/helpers';
-import { getDetails } from '../../store/detailsSlicer';
+import { getDetails,handleVideoPopupToggle } from '../../store/detailsSlicer';
 
 
 function Details() {
@@ -25,6 +25,10 @@ function Details() {
   const {videoPopupOpen,details} = useSelector((state) => state.details)
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    videoPopupOpen && dispatch(handleVideoPopupToggle())
+  },[])
 
   useEffect(() => {
     scrollToTop();

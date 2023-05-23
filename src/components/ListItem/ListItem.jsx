@@ -1,4 +1,3 @@
-import React from 'react'
 import '../../styles/globals.css'
 import { useSelector } from 'react-redux'
 import Img from '../LazyLoadImage/img'
@@ -22,7 +21,6 @@ const ListItem = ({ pageData }) => {
         }
         return movieGenreList;
     }
-
     return (
         <>
         {

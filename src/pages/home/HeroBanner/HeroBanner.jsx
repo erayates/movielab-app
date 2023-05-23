@@ -27,9 +27,9 @@ function HeroBanner() {
   const { videoPopupOpen } = useSelector((state) => state.details)
 
   return (
-    <div className={videoPopupOpen ? 'hero_banner w-full h-[500px] flex relative mt-[7rem]' : 'hero_banner w-full h-[500px] flex relative  rounded-2xl'}>
+    <div className={videoPopupOpen ? 'herobanner  mt-[8rem]' : 'herobanner'}>
       <div className='herobanner__img-container'>
-        {!loading && <Img src={backgroundImg} className={'herobanner__img'}/>}
+        {!loading && <Img src={backgroundImg} className={'herobanner__img'} />}
       </div>
       <div className='container z-[2] w-full  px-4 md:px-8 h-full'>
         <div className="herobanner__content">
@@ -40,7 +40,9 @@ function HeroBanner() {
               <p className='herobanner__movie-title'>{randomData.original_title}</p>
               <p className="herobanner__movie-overview">{randomData.overview.split('').slice(0, 100).join("")}... </p>
               <button className='show-more__btn' onClick={() => navigate(`/movie/${randomData.id}`)}>Show More</button>
-              <WatchTrailerBtn randomData={randomData}/>
+              <div className='mt-5'>
+                <WatchTrailerBtn randomData={randomData} />
+              </div>
             </div>
           )
           }
