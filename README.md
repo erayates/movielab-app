@@ -27,6 +27,11 @@ https://movielab-app.vercel.app
 - TailwindCSS
  You can find libraries that I used in package.json file.
 
+## Todos For Bugs
+- [] Responsive setting for search bar 
+- [] Responsive setting for search bar when video is opened
+- [] In mobile view, the sidebar will be turned on and off with a button
+- [] z-index adjustment will be made for elements.
   
 ## Screenshoots
 
